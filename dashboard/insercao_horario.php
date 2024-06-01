@@ -10,5 +10,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($conn->connect_error) {
         die("Erro de conexão: " . $conn->connect_error);
     }
+
+    $data = $_POST['data'];
+    $entrada = $_POST['entrada'];
+    $inicio_almoco = $_POST['inicio_almoco'];
+    $fim_almoco = $_POST['fim_almoco'];
+    $saida = $_POST['saida'];
 }
 ?>
