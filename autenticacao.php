@@ -10,5 +10,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($conn->connect_error) {
         die("Erro de conexão: " . $conn->connect_error);
     }
+
+    $username = $_POST['Username'];
+    $password = $_POST['Password'];
+
+    $sql = "SELECT id FROM Usuarios WHERE username = ? AND senha = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ss", $username, $password);
+    $stmt->execute();
+    $result = $stmt->get_result();
 }   
 ?>
