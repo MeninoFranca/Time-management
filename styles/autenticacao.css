@@ -12,3 +12,8 @@ body{
     background-position: center;
     overflow: hidden;
 }
+
+.user{
+    width: 100px;
+    height: 100px;
+}
