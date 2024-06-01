@@ -23,7 +23,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($stmt->execute()) {
         echo "Horários registrados com sucesso!";
-        
         echo "<script>localStorage.clear();</script>";
     } else {
         echo "Erro ao registrar horários: " . $stmt->error;
