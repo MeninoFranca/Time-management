@@ -50,3 +50,19 @@
         font-size: 18px;
     }
 }
+
+form{
+    border: 1px solid #59238F;
+    padding: 20px;
+    text-align: center;
+}
+label, input{
+    width: 40%;
+}
+h1{
+    text-align: center;
+}
+#button{
+    margin-top: 30px;
+    
+}
