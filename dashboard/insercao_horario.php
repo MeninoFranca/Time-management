@@ -16,5 +16,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $inicio_almoco = $_POST['inicio_almoco'];
     $fim_almoco = $_POST['fim_almoco'];
     $saida = $_POST['saida'];
+
+    $sql = "INSERT INTO horarios (data, entrada, inicio_almoco, fim_almoco, saida) VALUES (?, ?, ?, ?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("sssss", $data, $entrada, $inicio_almoco, $fim_almoco, $saida);
 }
 ?>
