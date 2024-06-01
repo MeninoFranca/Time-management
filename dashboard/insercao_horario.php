@@ -20,5 +20,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "INSERT INTO horarios (data, entrada, inicio_almoco, fim_almoco, saida) VALUES (?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("sssss", $data, $entrada, $inicio_almoco, $fim_almoco, $saida);
+
+    if ($stmt->execute()) {
+        echo "Horários registrados com sucesso!";
+        
+        echo "<script>localStorage.clear();</script>";
+    } else {
+        echo "Erro ao registrar horários: " . $stmt->error;
+    }
+    
+    
+    $stmt->close();
+    $conn->close();
 }
 ?>
