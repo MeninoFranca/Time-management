@@ -19,5 +19,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param("ss", $username, $password);
     $stmt->execute();
     $result = $stmt->get_result();
-}   
+
+    if ($result->num_rows == 1) {
+        $row = $result->fetch_assoc();
+        $_SESSION['usuario_id'] = $row['id'];
+        header("Location: dashboard/dashboard.html");
+        exit();
+    } else {
+        $_SESSION['mensagem'] = "Credenciais inválidas. Tente novamente.";
+        header("Location: autenticacao.html");
+        exit();
+    }
+    $stmt->close();
+    $conn->close();
+} else {
+
+    header("Location: autenticacao.html");
+    exit();
+}
+
 ?>
