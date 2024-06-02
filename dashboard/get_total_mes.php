@@ -18,4 +18,18 @@ $usuario_id = $_SESSION['usuario_id'];
 
 $mesAtual = date('m');
 $anoAtual = date('Y');
+
+$sql = "SELECT 
+            CONCAT(
+                FLOOR(SUM(TIME_TO_SEC(TIMEDIFF(IFNULL(saida, CURRENT_TIME), entrada)) / 3600)),
+                ' horas ',
+                FLOOR(MOD(SUM(TIME_TO_SEC(TIMEDIFF(IFNULL(saida, CURRENT_TIME), entrada))), 3600) / 60),
+                ' minutos'
+            ) AS TotalHorasTrabalhadas
+        FROM RegistroHorario
+        WHERE usuario_id = ? 
+            AND MONTH(data) = ?
+            AND YEAR(data) = ?";
+
+$stmt = $conn->prepare($sql);
 ?>
