@@ -8,3 +8,9 @@ function closeNav() {
     document.getElementById("main").style.marginLeft = "0";
 }
 
+function getMonthName() {
+    const months = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+    const now = new Date();
+    return months[now.getMonth()];
+}
+document.getElementById('horas-trabalhadas').innerText = "Horas trabalhadas em " + getMonthName();
