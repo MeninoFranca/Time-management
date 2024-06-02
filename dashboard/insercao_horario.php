@@ -1,5 +1,5 @@
 <?php
-session_start();
+include 'autentica.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $servername = "127.0.0.1:3306";
     $username = "u721539099_rooot";

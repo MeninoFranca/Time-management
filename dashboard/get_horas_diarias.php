@@ -1,12 +1,7 @@
 <?php
-session_start();
-header('Content-Type: application/json');
 
-// Verificar se o usuário está logado
-if (!isset($_SESSION['usuario_id'])) {
-    echo json_encode(["error" => "Usuário não autenticado"]);
-    exit;
-}
+include 'autentica.php';
+header('Content-Type: application/json');
 
 $servername = "127.0.0.1:3306";
 $username = "u721539099_rooot";

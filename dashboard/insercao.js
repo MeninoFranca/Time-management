@@ -7,6 +7,7 @@ function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
     document.getElementById("main").style.marginLeft = "0";
 }
+
 document.addEventListener('DOMContentLoaded', (event) => {
     const dataInput = document.getElementById('data');
     const entradaInput = document.getElementById('entrada');

@@ -1,41 +1,48 @@
 <?php
 session_start();
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $servername = "127.0.0.1:3306";
     $username = "u721539099_rooot";
     $password = "kSKZLaB2>";
     $dbname = "u721539099_Gestaohora";
+
     $conn = new mysqli($servername, $username, $password, $dbname);
 
+    
     if ($conn->connect_error) {
         die("Erro de conexão: " . $conn->connect_error);
     }
 
-    $username = $_POST['Username'];
-    $password = $_POST['Password'];
+    $username = $_POST['username'];
+    $password = $_POST['password'];
 
-    $sql = "SELECT id FROM Usuarios WHERE username = ? AND senha = ?";
+    $sql = "SELECT id FROM usuarios WHERE username = ? AND password = ?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ss", $username, $password);
-    $stmt->execute();
-    $result = $stmt->get_result();
 
-    if ($result->num_rows == 1) {
-        $row = $result->fetch_assoc();
-        $_SESSION['usuario_id'] = $row['id'];
-        header("Location: dashboard/dashboard.html");
-        exit();
-    } else {
-        $_SESSION['mensagem'] = "Credenciais inválidas. Tente novamente.";
-        header("Location: autenticacao.html");
-        exit();
+    if ($stmt === false) {
+        die("Erro na preparação da consulta: " . $conn->error);
     }
+
+    $stmt->bind_param("ss", $username, $password);
+
+    if (!$stmt->execute()) {
+        die("Erro na execução da consulta: " . $stmt->error);
+    }
+
+    $stmt->store_result();
+
+    if ($stmt->num_rows > 0) {
+        $stmt->bind_result($id);
+        $stmt->fetch();
+        $_SESSION['usuario_id'] = $id;
+        header("Location: dashboard/consulta.html");
+        exit;
+    } else {
+        $error = "Usuário ou senha inválidos";
+    }
+
     $stmt->close();
     $conn->close();
-} else {
-
-    header("Location: autenticacao.html");
-    exit();
 }
-
 ?>
