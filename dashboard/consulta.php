@@ -26,7 +26,7 @@
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <a href="insercao.php">Inserção</a>
         <a href="consulta.php">Consulta</a>
-        <a href="#">Sair</a>
+        <a href="logout.php">Sair</a>
     </div>
 
     <span onclick="openNav()"><i class="fa-solid fa-bars fa-3x"></i></span>
