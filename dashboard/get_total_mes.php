@@ -41,20 +41,14 @@ $stmt->bind_param("iii", $usuario_id, $mesAtual, $anoAtual);
 
 
 if ($stmt->execute()) {
-
     $result = $stmt->get_result();
-
     if ($result->num_rows > 0) {
-
         $row = $result->fetch_assoc();
-
-
-        echo "<h1 id='horas-trabalhadas'>" . $row['TotalHorasTrabalhadas'] . "</h1>";
+        echo $row['TotalHorasTrabalhadas'];
     } else {
-        echo "<h1 id='horas-trabalhadas'>Nenhuma hora trabalhada no mês atual</h1>";
+        echo "Nenhuma hora trabalhada no mês atual";
     }
 } else {
-
     echo "Erro ao executar a consulta: " . $stmt->error;
 }
 
