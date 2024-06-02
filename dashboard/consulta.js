@@ -24,4 +24,4 @@ document.addEventListener('DOMContentLoaded', () => {
             .catch(error => {
                 console.error('Ocorreu um erro:', error);
         });
-    });
+});
