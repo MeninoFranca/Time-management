@@ -39,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bind_result($id);
         $stmt->fetch();
         $_SESSION['usuario_id'] = $id;
-        header("Location: dashboard/consulta.html");
+        header("Location: dashboard/consulta.php");
         exit;
     } else {
         $error = "Usuário ou senha inválidos";

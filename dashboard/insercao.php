@@ -1,4 +1,6 @@
-
+<?php
+    include 'autentica.php';
+?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -29,28 +31,29 @@
     <span onclick="openNav()"><i class="fa-solid fa-bars fa-3x"></i></span>
 
     <div id="main">
-        <h1>Painel de Consulta</h1>
-
+        <h1>Painel de inserção</h1>
         <div class="container">
-            <form>
-                <h1 id="horas-trabalhadas"></h1>
+            <form action="insercao_horario.php" method="post">
+                <label for="data">Data:</label>
+                <input type="date" id="data" name="data" required>
+                <br><br>
+                <label for="entrada">Chegada:</label>
+                <input type="time" id="entrada" name="entrada" required>
                 <br>
-                <h2>24:05:41</h2>
-            </form>
-            <br>
-            <form>
-                <h1>Horas Trabalhadas Esta Semana</h1>
+                <label for="inicio_almoco">Início do Almoço:</label>
+                <input type="time" id="inicio_almoco" name="inicio_almoco" required>
                 <br>
-                <h2>24:05:41</h2>
+                <label for="fim_almoco">Fim do Almoço:</label>
+                <input type="time" id="fim_almoco" name="fim_almoco" required>
+                <br>
+                <label for="saida">Saída:</label>
+                <input type="time" id="saida" name="saida" required>
+                <br>
+                <input type="button" value="Registrar Horário" class="w-100 mt-4" id="registrar-horario">
             </form>
-        </div>
-        <div class="container">
-            <h1 class="mt-5">Dashboard de Horas Trabalhadas</h1>
-            <div id="calendar" class="mt-4"></div>
-            <div id="tooltip" class="tooltip"></div>
         </div>
     </div>
-    <script src="consulta.js"></script>
+    <script src="insercao.js"></script>
 </body>
 
 </html>
