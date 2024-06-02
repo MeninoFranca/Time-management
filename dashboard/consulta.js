@@ -13,4 +13,5 @@ function getMonthName() {
     const now = new Date();
     return months[now.getMonth()];
 }
+
 document.getElementById('horas-trabalhadas').innerText = "Horas trabalhadas em " + getMonthName();
