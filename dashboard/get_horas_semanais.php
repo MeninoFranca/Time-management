@@ -27,4 +27,13 @@ $sql = "SELECT
         WHERE usuario_id = ? 
             AND data BETWEEN DATE_SUB(CURDATE(), INTERVAL 6 DAY) AND CURDATE()";
 
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $usuario_id);
+$stmt->execute();
+$result = $stmt->get_result();
+$data = $result->fetch_assoc();
+$totalHorasSemana = $data['TotalHorasTrabalhadas'];
+
+echo $totalHorasSemana;
+
 ?>
