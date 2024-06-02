@@ -16,5 +16,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['data'], $_POST['entrad
     }
 
 
+    $data = $_POST['data'];
+    $entrada = $_POST['entrada'];
+    $inicio_almoco = $_POST['inicio_almoco'];
+    $fim_almoco = $_POST['fim_almoco'];
+    $saida = $_POST['saida'];
+
+    
+    $sql = "INSERT INTO RegistroHorario (usuario_id, data, entrada, inicio_almoco, fim_almoco, saida) VALUES (?, ?, ?, ?, ?, ?)";
+    $stmt = $conn->prepare($sql);
+
 }
 ?>
