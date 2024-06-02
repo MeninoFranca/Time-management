@@ -27,12 +27,27 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-    fetch('get_horas_semanais.php')
-        .then(response => response.text())
+    document.addEventListener('DOMContentLoaded', () => {
+        fetch('get_horas_semanais.php')
+            .then(response => response.json())
             .then(data => {
-                document.getElementById('resultado-semanal').innerText = data;
-        })
+                document.getElementById('resultado-semanal').innerText = data.TotalHorasTrabalhadas;
+            })
             .catch(error => {
                 console.error('Ocorreu um erro:', error);
-        });
+            });
+    });    
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    fetch('get_horas_diarias.php')
+        .then(response => response.json())
+        .then(data => {
+            const dias = Object.keys(data);
+            const horasTrabalhadas = Object.values(data).map(horas => {
+                const [hours, minutes, seconds] = horas.split(':').map(Number);
+                return (hours + minutes / 60 + seconds / 3600).toFixed(2);
+            });
+
+});
 });

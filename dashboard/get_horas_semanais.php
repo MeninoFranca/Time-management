@@ -18,7 +18,7 @@ $usuario_id = $_SESSION['usuario_id'];
 
 $sql = "SELECT 
             CONCAT(
-                FLOOR(SUM(TIME_TO_SEC(TIMEDIFF(IFNULL(saida, CURRENT_TIME), entrada)) / 3600)),
+                FLOOR(SUM(TIME_TO_SEC(TIMEDIFF(IFNULL(saida, CURRENT_TIME), entrada))) / 3600),
                 ' horas ',
                 FLOOR(MOD(SUM(TIME_TO_SEC(TIMEDIFF(IFNULL(saida, CURRENT_TIME), entrada))), 3600) / 60),
                 ' minutos'
@@ -34,6 +34,9 @@ $result = $stmt->get_result();
 $data = $result->fetch_assoc();
 $totalHorasSemana = $data['TotalHorasTrabalhadas'];
 
-echo $totalHorasSemana;
+echo json_encode(['TotalHorasTrabalhadas' => $totalHorasSemana]);
+
+$stmt->close();
+$conn->close();
 
 ?>
