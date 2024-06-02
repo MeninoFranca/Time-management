@@ -16,4 +16,15 @@ if ($conn->connect_error) {
 
 $usuario_id = $_SESSION['usuario_id'];
 
+$sql = "SELECT 
+            CONCAT(
+                FLOOR(SUM(TIME_TO_SEC(TIMEDIFF(IFNULL(saida, CURRENT_TIME), entrada)) / 3600)),
+                ' horas ',
+                FLOOR(MOD(SUM(TIME_TO_SEC(TIMEDIFF(IFNULL(saida, CURRENT_TIME), entrada))), 3600) / 60),
+                ' minutos'
+            ) AS TotalHorasTrabalhadas
+        FROM RegistroHorario
+        WHERE usuario_id = ? 
+            AND data BETWEEN DATE_SUB(CURDATE(), INTERVAL 6 DAY) AND CURDATE()";
+
 ?>
