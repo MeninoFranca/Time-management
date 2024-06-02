@@ -32,4 +32,33 @@ $sql = "SELECT
             AND YEAR(data) = ?";
 
 $stmt = $conn->prepare($sql);
+if ($stmt === false) {
+    die("Erro na preparação da consulta: " . $conn->error);
+}
+
+$usuario_id = $_SESSION['usuario_id'];
+$stmt->bind_param("iii", $usuario_id, $mesAtual, $anoAtual);
+
+
+if ($stmt->execute()) {
+
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+
+        $row = $result->fetch_assoc();
+
+
+        echo "<h1 id='horas-trabalhadas'>" . $row['TotalHorasTrabalhadas'] . "</h1>";
+    } else {
+        echo "<h1 id='horas-trabalhadas'>Nenhuma hora trabalhada no mês atual</h1>";
+    }
+} else {
+
+    echo "Erro ao executar a consulta: " . $stmt->error;
+}
+
+$stmt->close();
+
+
 ?>
