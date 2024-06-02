@@ -46,7 +46,7 @@
             <form>
                 <h1>Horas Trabalhadas Esta Semana</h1>
                 <br>
-                <h2>24:05:41</h2>
+                <h2 id="resultado-semanal"></h2>
             </form>
         </div>
     </div>

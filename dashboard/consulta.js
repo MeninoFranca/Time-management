@@ -25,3 +25,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.error('Ocorreu um erro:', error);
         });
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    fetch('get_horas_semanais.php')
+        .then(response => response.text())
+            .then(data => {
+                document.getElementById('resultado-semanal').innerText = data;
+        })
+            .catch(error => {
+                console.error('Ocorreu um erro:', error);
+        });
+});
