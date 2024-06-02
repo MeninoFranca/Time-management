@@ -29,7 +29,7 @@
         <a href="logout.php">Sair</a>
     </div>
 
-    <span onclick="openNav()"><i class="fa-solid fa-bars fa-3x"></i></span>
+    <span onclick="openNav()"><img src="../img/menu.png" alt="" width="50"></span>
 
     <div id="main">
         <h1>Painel de Consulta</h1>
