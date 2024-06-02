@@ -34,7 +34,7 @@ $result = $stmt->get_result();
 $data = $result->fetch_assoc();
 $totalHorasSemana = $data['TotalHorasTrabalhadas'];
 
-echo json_encode(['TotalHorasTrabalhadas' => $totalHorasSemana]);
+echo $totalHorasSemana;
 
 $stmt->close();
 $conn->close();

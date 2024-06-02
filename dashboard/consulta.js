@@ -27,7 +27,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-    document.addEventListener('DOMContentLoaded', () => {
         fetch('get_horas_semanais.php')
             .then(response => response.json())
             .then(data => {
@@ -36,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .catch(error => {
                 console.error('Ocorreu um erro:', error);
             });
-    });    
+    
 });
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -48,6 +47,29 @@ document.addEventListener('DOMContentLoaded', () => {
                 const [hours, minutes, seconds] = horas.split(':').map(Number);
                 return (hours + minutes / 60 + seconds / 3600).toFixed(2);
             });
-
-});
+            const ctx = document.getElementById('grafico-horas').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: dias,
+                    datasets: [{
+                        label: 'Horas trabalhadas',
+                        data: horasTrabalhadas,
+                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        })
+        .catch(error => {
+            console.error('Ocorreu um erro:', error);
+        });  
 });
