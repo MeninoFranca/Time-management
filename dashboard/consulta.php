@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
         integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" href="dashboard.css">
+    <script src="consulta.js"></script>
     <title>Tela dashboard</title>
 </head>
 
@@ -40,7 +41,7 @@
             <form>
                 <h1 id="horas-trabalhadas"></h1>
                 <br>
-                <h2>24:05:41</h2>
+                <h2></h2>
             </form>
             <br>
             <form>
@@ -49,11 +50,7 @@
                 <h2>24:05:41</h2>
             </form>
         </div>
-        <div class="container">
-            <h1 class="mt-5">Dashboard de Horas Trabalhadas</h1>
-        </div>
     </div>
-    <script src="consulta.js"></script>
 </body>
 
 </html>

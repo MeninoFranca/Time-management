@@ -15,3 +15,7 @@ function getMonthName() {
 }
 
 document.getElementById('horas-trabalhadas').innerText = "Horas trabalhadas em " + getMonthName();
+
+document.addEventListener('DOMContentLoaded', () => {
+    
+});
