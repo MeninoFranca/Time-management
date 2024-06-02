@@ -26,5 +26,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['data'], $_POST['entrad
     $sql = "INSERT INTO RegistroHorario (usuario_id, data, entrada, inicio_almoco, fim_almoco, saida) VALUES (?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
 
+    
+    if ($stmt === false) {
+        die("Erro na preparação da consulta: " . $conn->error);
+    }
+
+    
+    $stmt->bind_param("isssss", $_SESSION['usuario_id'], $data, $entrada, $inicio_almoco, $fim_almoco, $saida);
+
 }
 ?>
