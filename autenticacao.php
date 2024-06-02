@@ -1,4 +1,8 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -9,22 +13,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $conn = new mysqli($servername, $username, $password, $dbname);
 
-    
     if ($conn->connect_error) {
         die("Erro de conexão: " . $conn->connect_error);
     }
 
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+    $username_post = $_POST['username']; 
+    $password_post = $_POST['password'];
 
-    $sql = "SELECT id FROM usuarios WHERE username = ? AND password = ?";
+    $sql = "SELECT id FROM Usuarios WHERE username = ? AND senha = ?"; // Correção do nome da coluna
     $stmt = $conn->prepare($sql);
 
     if ($stmt === false) {
         die("Erro na preparação da consulta: " . $conn->error);
     }
 
-    $stmt->bind_param("ss", $username, $password);
+    $stmt->bind_param("ss", $username_post, $password_post);
 
     if (!$stmt->execute()) {
         die("Erro na execução da consulta: " . $stmt->error);
