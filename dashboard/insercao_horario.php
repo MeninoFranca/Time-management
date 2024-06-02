@@ -34,5 +34,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['data'], $_POST['entrad
     
     $stmt->bind_param("isssss", $_SESSION['usuario_id'], $data, $entrada, $inicio_almoco, $fim_almoco, $saida);
 
+    if ($stmt->execute()) {
+        echo "Horários registrados com sucesso!";
+        echo "<script>localStorage.clear();</script>";
+    } else {
+        echo "Erro ao registrar horários: " . $stmt->error;
+    }
+    
+    $stmt->close();
+    $conn->close();
+} else {
+    echo "Erro: Todos os campos do formulário devem ser preenchidos.";
 }
+
 ?>
